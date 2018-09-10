@@ -11,14 +11,22 @@ $(document).ready(function () {
 
     // initialize randomNumber value from random() function between 19 and 120
     var randomNumber = random(19, 120);
-    console.log(randomNumber);
+    console.log("randomNumber: " + randomNumber);
 
     // write randomNumber to HTML document
     $("#random-number").text(randomNumber);
 
     // initialize randomPoint value for gems from random() function between 1 and 12
     var randomPoint = random(1, 12);
-    console.log(randomPoint);
+    console.log("randomPoint: " + randomPoint);
+
+    console.log("total wins: " + wins);
+    // write total wins to HTML document
+    $("#total-wins").text("Wins: " + wins);
+
+    console.log("total losses: " + losses);
+    // write total losses to HTML document
+    $("#total-losses").text("Losses: " + losses);
 
     // function to reset 
     function reset() {
@@ -29,14 +37,15 @@ $(document).ready(function () {
         $("#total-score").text(totalScore);
     }
 
-    // if player score is less than randomNumber add randomPoint from button click 
+    // if player score is less than randomNumber add randomPoint from button click
     if (totalScore <= randomNumber) {
-        $("<button>").on("click", function () {
+        $(".gem").on("click", function () {
             totalScore = totalScore + random(1,12);
             console.log("totalScore: " + totalScore);
             $("#total-score").text(totalScore);
-        })
+        });
     }
+
     // if player score is equal to randomPoint add +1 to wins
     if (totalScore === randomNumber) {
         ++wins;
@@ -44,20 +53,11 @@ $(document).ready(function () {
         reset();
     }
 
-    // if player score is more than randomPoint add +1 to losses
+    // case if player score is more than randomPoint add +1 to losses
     if (totalScore >= randomNumber) {
         ++losses;
         $("#total-losses").text("Losses: " + losses);
         reset();
     }
 
-
-    // // return variables to referenced location in html
-
-    // console.log(wins);
-    // $("#total-wins").text("Wins: " + wins);
-    // console.log(losses);
-    // $("#total-losses").text("Losses: " + losses);
-    // console.log(score);
-    // $("#total-score").text(totalScore);
 });
