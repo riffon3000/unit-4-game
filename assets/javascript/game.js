@@ -42,13 +42,13 @@ $(document).ready(function () {
         $(".gem").on("click", function () {
             totalScore = totalScore + random(1, 12);
             console.log("totalScore: " + totalScore);
-            $("#total-score").text(totalScore);
+            $("#total-score").text(totalScore);            
 
             // if player score is equal to randomPoint add +1 to wins
             if (totalScore === randomNumber) {
                 ++wins;
                 $("#total-wins").text("Wins: " + wins);
-                alert("Woohoo! +1 Win");
+                alert("Total score is " + totalScore + ". Woohoo! +1 Win");
                 reset();
             }
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
             else if (totalScore >= randomNumber) {
                 ++losses;
                 $("#total-losses").text("Losses: " + losses);
-                alert("Better luck next time: +1 Loss");
+                alert("Total score is " + totalScore + ". Better luck next time: +1 Loss");
                 reset();
             }
         })
