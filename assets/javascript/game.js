@@ -36,36 +36,27 @@ $(document).ready(function () {
         totalScore = 0;
         $("#total-score").text(totalScore);
     }
+    
+    // if player score is less than randomNumber add randomPoint from button click
+    if (totalScore <= randomNumber) {
+        $(".gem").on("click", function () {
+            totalScore = totalScore + random(1, 12);
+            console.log("totalScore: " + totalScore);
+            $("#total-score").text(totalScore);
 
-    // switch (totalScore) {
+            // if player score is equal to randomPoint add +1 to wins
+            if (totalScore === randomNumber) {
+                ++wins;
+                $("#total-wins").text("Wins: " + wins);
+                reset();
+            }
 
-        // if player score is equal to randomPoint add +1 to wins
-        if (totalScore === randomNumber){
-            ++wins;
-            $("#total-wins").text("Wins: " + wins);
-            reset();
-        }
-            // break;
-
-        // case if player score is more than randomPoint add +1 to losses
-        if (totalScore >= randomNumber){
-            ++losses;
-            $("#total-losses").text("Losses: " + losses);
-            reset();
-        }
-            // break;
-
-        // if player score is less than randomNumber add randomPoint from button click
-        if (totalScore <= randomNumber){
-            $(".gem").on("click", function () {
-                totalScore = totalScore + random(1, 12);
-                console.log("totalScore: " + totalScore);
-                $("#total-score").text(totalScore);
-            })
-        }
-            // break;
-
-        // default:
-        //     break;
-    // }
+            // case if player score is more than randomPoint add +1 to losses
+            else if (totalScore >= randomNumber) {
+                ++losses;
+                $("#total-losses").text("Losses: " + losses);
+                reset();
+            }
+        })
+    }
 });
