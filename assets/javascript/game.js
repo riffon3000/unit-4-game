@@ -36,7 +36,7 @@ $(document).ready(function () {
         totalScore = 0;
         $("#total-score").text(totalScore);
     }
-    
+
     // if player score is less than randomNumber add randomPoint from button click
     if (totalScore <= randomNumber) {
         $(".gem").on("click", function () {
@@ -48,6 +48,7 @@ $(document).ready(function () {
             if (totalScore === randomNumber) {
                 ++wins;
                 $("#total-wins").text("Wins: " + wins);
+                alert("Woohoo! +1 Win");
                 reset();
             }
 
@@ -55,6 +56,7 @@ $(document).ready(function () {
             else if (totalScore >= randomNumber) {
                 ++losses;
                 $("#total-losses").text("Losses: " + losses);
+                alert("Better luck next time: +1 Loss");
                 reset();
             }
         })
