@@ -1,33 +1,63 @@
-// initialize variables to count wins, losses, and player score
-var wins = 0;
-var losses = 0;
-var score = 0;
+$(document).ready(function () {
+    // initialize variables to count wins, losses, and total score
+    var wins = 0;
+    var losses = 0;
+    var totalScore = 0;
 
-// function to generate and return random numbers with range between 19 and 120
-var randomNumber = random(19, 120);
-var randomPoint = random(1, 12);
+    // function to generate and return random numbers with range between min and max
+    function random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
-function random(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-console.log(randomNumber);
-console.log(randomPoint);
+    // initialize randomNumber value from random() function between 19 and 120
+    var randomNumber = random(19, 120);
+    console.log(randomNumber);
 
-// if player score is equal to randomPoint add +1 to wins
-if (score === randomNumber) {
-    ++wins;
-}
+    // write randomNumber to HTML document
+    $("#random-number").text(randomNumber);
 
-// if player score is more than randomPoint add +1 to losses
-if (score >= randomNumber) {
-    ++losses;
-}
+    // initialize randomPoint value for gems from random() function between 1 and 12
+    var randomPoint = random(1, 12);
+    console.log(randomPoint);
 
-// return variables to referenced location in html
-$("#random-number").text(randomNumber);
-console.log(wins);
-$("#number-wins").text("Wins: "+ wins);
-console.log(losses);
-$("#number-losses").text("Losses: " + losses);
-console.log(score);
-$("#your-score").text(score);
+    // function to reset 
+    function reset() {
+        randomNumber = random(19, 120);
+        $("#random-number").text(randomNumber);
+        randomPoint = random(1, 12);
+        totalScore = 0;
+        $("#total-score").text(totalScore);
+    }
+
+    // if player score is less than randomNumber add randomPoint from button click 
+    if (totalScore <= randomNumber) {
+        $("<button>").on("click", function () {
+            totalScore = totalScore + random(1,12);
+            console.log("totalScore: " + totalScore);
+            $("#total-score").text(totalScore);
+        })
+    }
+    // if player score is equal to randomPoint add +1 to wins
+    if (totalScore === randomNumber) {
+        ++wins;
+        $("#total-wins").text("Wins: " + wins);
+        reset();
+    }
+
+    // if player score is more than randomPoint add +1 to losses
+    if (totalScore >= randomNumber) {
+        ++losses;
+        $("#total-losses").text("Losses: " + losses);
+        reset();
+    }
+
+
+    // // return variables to referenced location in html
+
+    // console.log(wins);
+    // $("#total-wins").text("Wins: " + wins);
+    // console.log(losses);
+    // $("#total-losses").text("Losses: " + losses);
+    // console.log(score);
+    // $("#total-score").text(totalScore);
+});
