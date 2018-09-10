@@ -19,14 +19,15 @@
 </head>
 
 <body>
-    <header class="container-fluid shadow p-4 mb-3 text-center">
+    <header class="container-fluid shadow p-3 mb-3 text-center">
         <h1>Crystals Collector!</h1>
     </header>
 
     <!-- div displaying game rules and expectation -->
     <div class="container shadow mb-3">
         <div class="row">
-            <div class="col mb-2">
+            <div class="col p-3">
+                <p></p>
                 <p>You will be given a random number at the start of the game.</p>
                 <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
                 <p>You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number.</p>
@@ -38,11 +39,11 @@
 
     <!-- div displaying random number and wins and losses -->
     <div class="container shadow mb-3">
-        <div class="row">
-            <div class="col p-4 text-center">
-                <p class="h2" id="random-number">random number</p>
+        <div class="row text-center">
+            <div class="col p-3 h2">
+                <p id="random-number">random number</p>
             </div>
-            <div class="col p-4 text-center h4">
+            <div class="col p-3 h4">
                 <p id="number-wins">Wins: 0</p>
                 <p id="number-losses">Losses: 0</p>
             </div>
@@ -51,31 +52,36 @@
 
     <!-- div displaying 4 different gems -->
     <div class="container shadow mb-3">
-        <div class="row">
-            <div class="col">
-                <img src="./assets/images/bluegem.png" alt="Blue Gem" id="bluegem">
+        <div class="row justify-content-center">
+            <div class="col-auto p-1">
+                <button id="bluegem"><img src="./assets/images/bluegem.png" alt="Blue Gem"></button>
             </div>
-            <div class="col">
-                <img src="./assets/images/redgem.png" alt="Red Gem" id="redgem">
+            <div class="col-auto p-1">
+                <button id="redgem"><img src="./assets/images/redgem.png" alt="Red Gem"></button>
             </div>
-            <div class="col">
-                <img src="./assets/images/greengem.png" alt="Green Gem" id="greengem">
+            <div class="col-auto p-1">
+                <button id="greengem"><img src="./assets/images/greengem.png" alt="Green Gem"></button>
             </div>
-            <div class="col">
-                <img src="./assets/images/diamond.png" alt="Diamond" id="diamond">
+            <div class="col-auto p-1">
+                <button id="diamond"><img src="./assets/images/diamond.png" alt="Diamond"></button>
             </div>
         </div>
     </div>
 
-    
+    <!-- div displaying player score -->
     <div class="container shadow mb-3">
-            <div class="col-8 text-center h2">
-                <span id="msg-text">Guess!</span>
+        <div class="row text-center">
+            <div class="col justify-content-right p-3 h4">
+                <p></p>
+                <p>Your total score is: </p>
+            </div>
+            <div class="col p-3 h2">
+                <p id="your-score">0</p>
             </div>
         </div>
     </div>
 
-    <footer class="container-fluid shadow p-4 mb-3 relative-bottom text-center text-secondary">
+    <footer class="container-fluid shadow p-3 mb-3 relative-bottom text-center text-secondary">
         <p>Copyright &copy</p>
     </footer>
 </body>
